@@ -39,7 +39,7 @@
             <div class="col-md-4">
                 <div class="balance status">
                     <h5>Balance</h5>
-                    <h2>$1240</h2>
+                    <h2>$ <span id="currentBalance"></span></h2>
                 </div>
             </div>
         </div>
@@ -78,15 +78,23 @@
       const depositBtn = document.getElementById("addDeposit");
       depositBtn.addEventListener("click", function(){
           const depositAmount = document.getElementById("depositAmount").value;
-          const depositNumber = perseFloat("depositAmount");
+          const depositNumber = parseFloat(depositAmount);
           
 
-         const currentDeposit = document.getElementById("currentDeposit").innerText
-         const currentDepositNumber = perseFloat("currentDeposit");
-         const totalDeposit = depositNumber + currentDepositNumber;
-         console.log(totalDeposit); 
+          const currentDeposit = document.getElementById("currentDeposit").innerText;
+          const currentDepositNumber = parseFloat(currentDeposit);
+          const totalDeposit = depositNumber + currentDepositNumber;
 
-         document.getElementById("currentDeposit").innerText = totalDeposit;
+          document.getElementById("currentDeposit").innerText = totalDeposit;
+
+
+          const currentBalance = document.getElementById("currentBalance").innerText;
+          const currentBalanceNumber = parseFloat(currentBalance);
+          const totalBalance = depositNumber + currentBalanceNumber;
+          document.getElementById("currentDeposit").innerText = totalBalance;
+
+          document.getElementById("depositAmount").value = "";
+          
       })
    </script>
 </body>
